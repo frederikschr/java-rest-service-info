@@ -1,5 +1,7 @@
 #BlueJ class context
 comment0.target=UserHandler
-comment1.params=request
-comment1.target=void\ handle(com.sun.net.httpserver.HttpExchange)
-numComments=2
+comment1.params=dbController
+comment1.target=UserHandler(DatabaseController)
+comment2.params=exchange
+comment2.target=void\ handle(com.sun.net.httpserver.HttpExchange)
+numComments=3
