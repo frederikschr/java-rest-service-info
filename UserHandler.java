@@ -24,29 +24,32 @@ public class UserHandler implements HttpHandler
         
         exchange.getResponseHeaders().set("Content-Type", "application/json");
         
+        String[] response = new String[2];
+        
+        
         if (exchange.getRequestMethod().equals("GET")) {
             
-            this.userController.getUser(requestBody);            
-        
-            // exchange.sendResponseHeaders(200, responseText.getBytes().length);
-
-            // output.write(responseText.getBytes());
-            output.flush();    
+            response = this.userController.getUser(requestBody);            
+           
         }
         
         else if (exchange.getRequestMethod().equals("POST")) {
-              
-            
-            
-            
-
-            
-            
+            response = this.userController.createUser(requestBody);
         }
         
         else {
             exchange.sendResponseHeaders(405, -1);
         }
+        
+        
+        if (response[0] != null && response[1] != null) {
+            int responseStatusCode = Integer.parseInt(response[0]);
+            String responseText = response[1];
+            exchange.sendResponseHeaders(responseStatusCode, responseText.getBytes().length);
+            output.write(responseText.getBytes());
+            output.flush();
+        }
+        
         
         exchange.close();
         

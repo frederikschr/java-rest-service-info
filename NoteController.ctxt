@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=NoteController
+comment0.text=\r\n\ Beschreiben\ Sie\ hier\ die\ Klasse\ NotesController.\r\n\ \r\n\ @author\ (Ihr\ Name)\ \r\n\ @version\ (eine\ Versionsnummer\ oder\ ein\ Datum)\r\n
+comment1.params=dbController
+comment1.target=NoteController(DatabaseController)
+comment1.text=\r\n\ Konstruktor\ f\u00FCr\ Objekte\ der\ Klasse\ NotesController\r\n
+numComments=2

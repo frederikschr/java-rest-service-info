@@ -14,11 +14,18 @@ public class UserController
     }
     
     
-    public void createUser(String userData) {
+    public String[] createUser(String userData) {
+        String[] response = {"200", "Successfully created user!"};
         
+        String[] data = userData.split(":");//.replaceAll("}", "").split(":");
+        
+        System.out.println("Received user data: " + data[0] + " " + data[1]);
+        
+        return response;
     }
     
-    public void getUser(String userData) {
-    
+    public String[] getUser(String userData) {
+        String[] response = {"200", "Hello there!"};
+        return response;
     }
 }

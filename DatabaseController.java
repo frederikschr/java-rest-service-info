@@ -26,7 +26,7 @@ public class DatabaseController
                         "User_ID         INT    NOT NULL,"         +
                         "FOREIGN KEY(User_ID) REFERENCES User(ID))";
         
-    Connection conn;
+    private Connection conn;
     
     public DatabaseController()
     {
