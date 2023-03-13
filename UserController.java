@@ -5,6 +5,9 @@
  * @author (Ihr Name) 
  * @version (eine Versionsnummer oder ein Datum)
  */
+
+
+
 public class UserController
 {
     private DatabaseController dbController;
@@ -14,13 +17,11 @@ public class UserController
     }
     
     
-    public String[] createUser(String userData) {
+    public String[] createUser(String username, String password) {
+        
+        System.out.println("User signed up with username: " + username + " and password: " + password); 
+        
         String[] response = {"200", "Successfully created user!"};
-        
-        String[] data = userData.split(":");//.replaceAll("}", "").split(":");
-        
-        System.out.println("Received user data: " + data[0] + " " + data[1]);
-        
         return response;
     }
     

@@ -5,6 +5,8 @@ import com.sun.net.httpserver.HttpExchange;
 import java.io.OutputStream;
 import java.io.IOException;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class UserHandler implements HttpHandler
 {
@@ -27,18 +29,32 @@ public class UserHandler implements HttpHandler
         String[] response = new String[2];
         
         
-        if (exchange.getRequestMethod().equals("GET")) {
+        try {
+        
+            if (exchange.getRequestMethod().equals("GET")) {
+                
+                response = this.userController.getUser(requestBody);            
+               
+            }
             
-            response = this.userController.getUser(requestBody);            
-           
-        }
+            else if (exchange.getRequestMethod().equals("POST")) {
+                
+                JSONObject json = new JSONObject(requestBody);
         
-        else if (exchange.getRequestMethod().equals("POST")) {
-            response = this.userController.createUser(requestBody);
-        }
+                String username = json.getString("username");
+                String password = json.getString("password");
+                
+                response = this.userController.createUser(username, password);
+              
+            }
+            
+            else {
+                exchange.sendResponseHeaders(405, -1); // HTTP Method not allowed
+            }
         
-        else {
-            exchange.sendResponseHeaders(405, -1);
+            
+        } catch (JSONException e) {
+            exchange.sendResponseHeaders(400, -1); // Bad request --> json invalid
         }
         
         
