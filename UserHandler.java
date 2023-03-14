@@ -8,6 +8,8 @@ import java.io.IOException;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.sql.SQLException;
+
 public class UserHandler implements HttpHandler
 {
     private UserController userController;
@@ -33,7 +35,7 @@ public class UserHandler implements HttpHandler
         
             if (exchange.getRequestMethod().equals("GET")) {
                 
-                response = this.userController.getUser(requestBody);            
+                //response = this.userController.getUser(requestBody);            
                
             }
             
@@ -48,15 +50,25 @@ public class UserHandler implements HttpHandler
               
             }
             
-            else {
-                exchange.sendResponseHeaders(405, -1); // HTTP Method not allowed
+            else { // Method not allowed
+                response[0] = "405";
+                response[1] = "Method not allowed";
             }
         
             
-        } catch (JSONException e) {
-            exchange.sendResponseHeaders(400, -1); // Bad request --> json invalid
+        } catch (Exception e) { // Bad request --> JSON invalid
+            if (e instanceof JSONException) {
+                response[0] = "400";
+                response[1] = e.getMessage();
+            }
+            
+            else if (e instanceof SQLException) {
+                response[0] = "500";
+                response[1] = "Internal server error";
+            }
+            System.out.println("Error: " + e.getMessage());
         }
-        
+    
         
         if (response[0] != null && response[1] != null) {
             int responseStatusCode = Integer.parseInt(response[0]);

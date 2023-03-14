@@ -7,6 +7,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.SQLException;
+import java.sql.ResultSet;
 
 public class DatabaseController
 {
@@ -14,13 +15,13 @@ public class DatabaseController
     final private String DB_URL = "jdbc:sqlite:" + this.DATABASE_NAME + ".db";
     
     final private String USER_TABLE_SQL = "CREATE TABLE User "     +
-                       "(ID INT PRIMARY KEY     NOT NULL,"         +
+                       "(ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"         +
                        " Name           TEXT    NOT NULL,"         + 
                        " Password       TEXT    NOT NULL)";
                        
                        
     final private String NOTES_TABLE_SQL = "CREATE TABLE Notes "   +
-                        "(ID INT PRIMARY KEY    NOT NULL,"         +
+                        "(ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"         +
                         "Date            TEXT   NOT NULL,"         +
                         "Content         TEXT   NOT NULL,"         +
                         "User_ID         INT    NOT NULL,"         +
@@ -61,10 +62,17 @@ public class DatabaseController
         System.out.println("Created new database tables.");
     }
     
-    private void execute(String sql) throws SQLException {
+    public void execute(String sql) throws SQLException {
         Statement stmt = this.conn.createStatement();
         System.out.println("Executing: " + sql);
         stmt.execute(sql);
     }
+    
+    public ResultSet query(String sql) throws SQLException {
+        Statement stmt = this.conn.createStatement();
+        ResultSet rs = stmt.executeQuery(sql);
+        return rs;
+    }
+    
 
 }
