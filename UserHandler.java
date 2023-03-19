@@ -32,14 +32,7 @@ public class UserHandler implements HttpHandler
         
         
         try {
-        
-            if (exchange.getRequestMethod().equals("GET")) {
-                
-                //response = this.userController.getUser(requestBody);            
-               
-            }
-            
-            else if (exchange.getRequestMethod().equals("POST")) {
+            if (exchange.getRequestMethod().equals("POST")) {
                 
                 JSONObject json = new JSONObject(requestBody);
         
@@ -78,8 +71,6 @@ public class UserHandler implements HttpHandler
             output.flush();
         }
         
-        
         exchange.close();
-        
     }
 }

@@ -4,6 +4,4 @@ comment1.params=dbController
 comment1.target=UserController(DatabaseController)
 comment2.params=username\ password
 comment2.target=java.lang.String[]\ createUser(java.lang.String,\ java.lang.String)
-comment3.params=username\ password
-comment3.target=java.lang.String[]\ getUser(java.lang.String,\ java.lang.String)
-numComments=4
+numComments=3

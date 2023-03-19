@@ -32,10 +32,15 @@ public class NoteHandler implements HttpHandler
         String[] response = new String[2];
         
         try {
-        
+
             if (exchange.getRequestMethod().equals("GET")) {
                 
-                //response = this.userController.getUser(requestBody);            
+                JSONObject json = new JSONObject(requestBody);
+                
+                String username = json.getString("username");
+                String password = json.getString("password");
+                
+                response = this.noteController.getNotes(username, password);         
                
             }
             

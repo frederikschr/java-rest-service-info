@@ -22,7 +22,7 @@ public class API {
     }
     
     public void registerResources() {
-        this.server.createContext("/api/greeting", new UserHandler(dbController));
+        this.server.createContext("/api/user", new UserHandler(dbController));
         this.server.createContext("/api/note", new NoteHandler(dbController));
     }
 }

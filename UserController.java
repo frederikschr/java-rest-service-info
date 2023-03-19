@@ -43,14 +43,4 @@ public class UserController
       
         return response;
     }
-    
-    public String[] getUser(String username, String password) throws SQLException {
-        
-        String user_query_sql = "SELECT * FROM User WHERE User.name = '" + username + "'";
-        
-        ResultSet rs = dbController.query(user_query_sql);
-        
-        String[] response = {"200", "Hello there!"};
-        return response;
-    }
 }
