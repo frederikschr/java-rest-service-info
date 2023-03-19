@@ -27,7 +27,7 @@ public class UserController
         String create_user_sql = "INSERT INTO User (Name,Password) VALUES('" +  username + "', '" + password + "');";
         
                 
-        ResultSet rs = dbController.query(check_for_existing_user_sql);
+        ResultSet rs = this.dbController.query(check_for_existing_user_sql);
         
         if (rs.isBeforeFirst()) { //Data set is not empty --> user already exists
             response[0] = "409";

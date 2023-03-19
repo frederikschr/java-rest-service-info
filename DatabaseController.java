@@ -20,7 +20,7 @@ public class DatabaseController
                        " Password       TEXT    NOT NULL)";
                        
                        
-    final private String NOTES_TABLE_SQL = "CREATE TABLE Notes "   +
+    final private String NOTES_TABLE_SQL = "CREATE TABLE Note "   +
                         "(ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"         +
                         "Date            TEXT   NOT NULL,"         +
                         "Content         TEXT   NOT NULL,"         +
