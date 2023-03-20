@@ -17,9 +17,6 @@ public class Server {
         this.httpServer = HttpServer.create(new InetSocketAddress(this.PORT), 0);
         this.httpServer.setExecutor(null); // creates a default executor
         this.api = new API(this.httpServer);
-        
-        this.start();
-        
     }
     
     public void start() {

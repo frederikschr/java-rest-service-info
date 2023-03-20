@@ -1,0 +1,5 @@
+Create User: curl "http://localhost:8080/api/user" -X POST -H 'Content-Type:application/json' -d {"username":"Frederik","password":"Hallo123"}
+
+Create Note: curl "http://localhost:8080/api/note" -X POST -H 'Content-Type:application/json' -d {"username":"Frederik","password":"Hallo123","date":"19.03.2005","content":"This is my birthday!"}
+
+Get all Notes from one User: curl "http://localhost:8080/api/note" -X GET -H 'Content-Type:application/json' -d {"username":"Frederik","password":"Hallo123"}
